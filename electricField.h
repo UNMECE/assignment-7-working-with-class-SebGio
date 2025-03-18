@@ -3,17 +3,17 @@
 
 class ElectricField
 {
-	private:
-		double *E;
-	public:
-		ElectricField();
-		ElectricField(double ex, double ey, double ez);
-		~ElectricField();
-		
-		void setVector();
-		double getVector();
-		double calculateMagnitude();
-		double innerProduct();
-}
+private:
+	double* E;
+public:
+	ElectricField();
+	ElectricField(double ex, double ey, double ez);
+	~ElectricField();
+
+	void setVector(double ex, double ey, double ez);
+	double* getVector();
+	double calculateMagnitude();
+	double innerProduct();
+};
 
 #endif

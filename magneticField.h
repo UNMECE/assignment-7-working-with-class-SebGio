@@ -3,16 +3,17 @@
 
 class MagneticField
 {
-	private:
-		double *E;
-	public:
-		MagneticField();
-		MagneticField(double ex, double ey, double ez);
-		~MagneticField();
-		
-		void setVector();
-		double getVector();
-		double calculateMagnitude();
-		double unitVector();
-}
+private:
+	double* E;
+public:
+	MagneticField();
+	MagneticField(double ex, double ey, double ez);
+	~MagneticField();
+
+	void setVector(double ex, double ey, double ez);
+	double* getVector();
+	double calculateMagnitude();
+	void unitVector();
+};
+
 #endif

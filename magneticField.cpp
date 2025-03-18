@@ -1,45 +1,50 @@
 #include "magneticField.h"
 #include <cmath>
+#include <iostream>
 
-class MagneticField
+
+MagneticField::MagneticField()
 {
-	MagneticField()
-	{
-		E = new double[3];
-	}
+	E = new double[3];
+}
 
-	MagneticField(double ex, double ey, double ez)
-	{
-		E[0] = ex;
-		E[1] = ey;
-		E[2] = ez;
-	}
+MagneticField::MagneticField(double ex, double ey, double ez)
+{
+	E = new double[3];
+	E[0] = ex;
+	E[1] = ey;
+	E[2] = ez;
+}
 
-	~MagneticField()
-	{
-		delete [] E;
-	}
+MagneticField::~MagneticField()
+{
+	delete [] E;
+}
 
-	double calculateMagnitude()
-	{
-		//pythagorean theorem
-		return sqrt(pow(ex, 2) + pow(ey, 2) + pow(ez, 2));
-	}
+double MagneticField::calculateMagnitude()
+{
+	//pythagorean theorem
+	return sqrt(pow(E[0], 2) + pow(E[1], 2) + pow(E[2], 2));
+}
 
-	double[] unitVector()
+void MagneticField::unitVector()
+{
+	double norm[3];
+	for (int i = 0; i < 3; ++i)
 	{
-		double norm[3];
-		for (int i = 0; i < 3; ++i)
-		{
-			norm[i] = E[i]/abs(E[i])
-		}
-		return norm;
+		norm[i] = E[i] / calculateMagnitude();
 	}
+	std::cout << "Unit vector: " << norm[0] << ", " << norm[1] << ", " << norm[2] << std::endl;
+}
 
-	void setVector(double ex, double ey, double ez)
-	{
-	  E[0] = ex;
-		E[1] = ey;
-		E[2] = ez;
-	}
+void MagneticField::setVector(double ex, double ey, double ez)
+{
+	E[0] = ex;
+	E[1] = ey;
+	E[2] = ez;
+}
+
+double* MagneticField::getVector()
+{
+	return E;
 }
